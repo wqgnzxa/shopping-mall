@@ -10,8 +10,7 @@
 
 <script>
 import "swiper/dist/css/swiper.css";
-import { swiper, swiperSlide } from "vue-awesome-swiper";
-
+import { swiper, swiperSlide } from "vue-awesome-swiper"
 export default {
     components: {
         swiper,
@@ -22,7 +21,7 @@ export default {
       swiperOption: {
         loop: true,
         autoplay: {
-          delay: 5000,
+          delay: 3000,
           stopOnLastSlide: false,
           disableOnInteraction: false
         },

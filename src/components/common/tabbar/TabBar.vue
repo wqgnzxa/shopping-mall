@@ -1,18 +1,18 @@
 <template>
   <div id="TabBar">
-<slot></slot>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import TabBarItem from './TabBarItem.vue'
+import TabBarItem from "./TabBarItem.vue";
 
 export default {
-name: 'Tabbar',
-components: {
-  TabBarItem
-}
-}
+  name: "Tabbar",
+  components: {
+    TabBarItem,
+  },
+};
 </script>
 
 <style>
@@ -27,8 +27,9 @@ body {
   left: 0;
   width: 100%;
   height: 49px;
-  box-shadow: 0 -3px 1px rgba(80,80,80,0.2);
+  box-shadow: 0 -3px 1px rgba(80, 80, 80, 0.2);
   background-color: #f6f6f6;
   text-align: center;
+  z-index: 9;
 }
 </style>

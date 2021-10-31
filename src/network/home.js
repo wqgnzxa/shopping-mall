@@ -1,4 +1,4 @@
-import { request, request2 } from "./request";
+import { request } from "./request";
 
 export function getHomeMultidata() {
     return request({

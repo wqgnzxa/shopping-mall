@@ -25,6 +25,7 @@ data(){
 methods: {
   itemclick(index) {
     this.currentIndex = index;
+    this.$emit('tabClick',index)
   }
 }
 }
@@ -38,6 +39,7 @@ methods: {
   width: 100%;
   text-align: center;
   background-color: #fff;
+  z-index: 9;
 }
 
 .tab-item {
