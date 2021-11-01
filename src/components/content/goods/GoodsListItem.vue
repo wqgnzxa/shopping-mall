@@ -1,27 +1,29 @@
 <template>
   <div class="goods-list-item">
-    <img :src="goodsItem.img" alt="">
-  <div class="goods-info">
-    <p>{{goodsItem.title}}</p>
-    <span class="price">{{goodsItem.price}}</span>
-    <span class="collect">{{goodsItem.cfav}}</span>
-  </div>
-
+    <img :src="goodsItem.img" alt="" />
+    <div class="goods-info">
+      <p>{{ goodsItem.title }}</p>
+      <span class="price">{{ goodsItem.price }}</span>
+      <span class="collect">
+        <i class="icon-cfav"></i>
+        {{ goodsItem.cfav }}
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-name: 'GoodsListItem',
-props: {
-  goodsItem: {
-    type: Object,
-    default() {
-return {}
-    }
-  }
-}
-}
+  name: "GoodsListItem",
+  props: {
+    goodsItem: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+};
 </script>
 
 <style>
@@ -63,14 +65,17 @@ return {}
 }
 
 .goods-info .collect::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -15px;
   top: -1px;
   width: 14px;
   height: 14px;
-  background-color: green;
+  /* background-color: green; */
 }
 
-
+.icon-cfav {
+  content: "";
+  color: rgb(255, 217, 0);
+}
 </style>

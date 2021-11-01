@@ -1,19 +1,8 @@
-<template>
-  <div>
-    我是用户
-  </div>
-</template>
+<template></template>
+
 <script>
-import * as mockApi from '../../api/api.js'
-
-    mockApi.getItemList().then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    })
-
-
-export default {
-  
-}
+export default {};
 </script>
+
+<style>
+</style>

@@ -8,8 +8,8 @@
 
 <script>
 export default {
-name:'navbar'
-}
+  name: "navbar",
+};
 </script>
 
 <style>
@@ -21,18 +21,17 @@ name:'navbar'
   width: 100%;
   height: 44px;
   line-height: 44px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-  z-index: 9999;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  z-index: 9;
 }
 
 .left,
 .right {
-width: 60px;
-
+  width: 60px;
 }
 
 .center {
   flex: 1;
-text-align: center;
+  text-align: center;
 }
 </style>

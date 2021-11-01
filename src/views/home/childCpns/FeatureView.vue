@@ -1,18 +1,18 @@
 
 <template>
   <div class="feature">
-    <a href="#"><img src="../../../assets/img/home/feature2.jpg"></a>
+    <a href="#"><img src="../../../assets/img/home/feature.jpg" /></a>
   </div>
 </template>
 
 <script>
 export default {
-name: "FeatureView"
-}
+  name: "FeatureView",
+};
 </script>
 
 <style>
 .feature img {
-  width: 100%
+  width: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('../fonts/icomoon.eot?5ilpy1');
-    src: url('../fonts/icomoon.eot?5ilpy1#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?5ilpy1') format('truetype'), url('../fonts/icomoon.woff?5ilpy1') format('woff'), url('../fonts/icomoon.svg?5ilpy1#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?pe72d3');
+    src: url('../fonts/icomoon.eot?pe72d3#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?pe72d3') format('truetype'), url('../fonts/icomoon.woff?pe72d3') format('woff'), url('../fonts/icomoon.svg?pe72d3#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -11,7 +11,7 @@
 [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'icomoon' !important;
-    /* speak: never; */
+    speak: never;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -22,18 +22,170 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-grid:before {
-    content: "\e912";
+.icon-arrow-right1:before {
+    content: "\e902";
 }
 
-.icon-home:before {
-    content: "\e911";
+.icon-arrow-thick-down:before {
+    content: "\e903";
 }
 
-.icon-shopping-cart:before {
+.icon-arrow-thick-left:before {
     content: "\e904";
 }
 
-.icon-user1:before {
-    content: "\e913";
+.icon-arrow-thick-right:before {
+    content: "\e905";
+}
+
+.icon-arrow-thick-up:before {
+    content: "\e906";
+}
+
+.icon-arrow-thin-down:before {
+    content: "\e907";
+}
+
+.icon-arrow-thin-left:before {
+    content: "\e908";
+}
+
+.icon-arrow-thin-right:before {
+    content: "\e909";
+}
+
+.icon-arrow-thin-up:before {
+    content: "\e90a";
+}
+
+.icon-home1:before {
+    content: "\e90b";
+}
+
+.icon-shopping-cart:before {
+    content: "\e90c";
+}
+
+.icon-user:before {
+    content: "\e90d";
+}
+
+.icon-view-tile:before {
+    content: "\e90e";
+}
+
+.icon-home:before {
+    content: "\e900";
+}
+
+.icon-home2:before {
+    content: "\e901";
+}
+
+.icon-star-empty:before {
+    content: "\e9d7";
+}
+
+.icon-star-full:before {
+    content: "\e9d9";
+}
+
+.icon-arrow-up-left:before {
+    content: "\ea31";
+}
+
+.icon-arrow-up:before {
+    content: "\ea32";
+}
+
+.icon-arrow-up-right:before {
+    content: "\ea33";
+}
+
+.icon-arrow-right:before {
+    content: "\ea34";
+}
+
+.icon-arrow-down-right:before {
+    content: "\ea35";
+}
+
+.icon-arrow-down:before {
+    content: "\ea36";
+}
+
+.icon-arrow-down-left:before {
+    content: "\ea37";
+}
+
+.icon-arrow-left:before {
+    content: "\ea38";
+}
+
+.icon-arrow-up-left2:before {
+    content: "\ea39";
+}
+
+.icon-arrow-up2:before {
+    content: "\ea3a";
+}
+
+.icon-arrow-up-right2:before {
+    content: "\ea3b";
+}
+
+.icon-arrow-right2:before {
+    content: "\ea3c";
+}
+
+.icon-arrow-down-right2:before {
+    content: "\ea3d";
+}
+
+.icon-arrow-down2:before {
+    content: "\ea3e";
+}
+
+.icon-arrow-down-left2:before {
+    content: "\ea3f";
+}
+
+.icon-arrow-left2:before {
+    content: "\ea40";
+}
+
+.icon-circle-up:before {
+    content: "\ea41";
+}
+
+.icon-circle-right:before {
+    content: "\ea42";
+}
+
+.icon-circle-down:before {
+    content: "\ea43";
+}
+
+.icon-circle-left:before {
+    content: "\ea44";
+}
+
+.icon-checkbox-checked:before {
+    content: "\ea52";
+}
+
+.icon-checkbox-unchecked:before {
+    content: "\ea53";
+}
+
+.icon-radio-checked:before {
+    content: "\ea54";
+}
+
+.icon-radio-checked2:before {
+    content: "\ea55";
+}
+
+.icon-radio-unchecked:before {
+    content: "\ea56";
 }
