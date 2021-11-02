@@ -1,58 +1,71 @@
 <template>
-<div class="recommendPage">
+  <div class="recommendPage">
     <swiper :options="swiperOption" ref="mySwiper">
-      <swiper-slide v-for="items in banners"><a :href="items.link"><img :src="items.image"></a></swiper-slide>
+      <swiper-slide v-for="items in banners"
+        ><a :href="items.link"><img :src="items.image" @load="imgLoad" /></a
+      ></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
-       <!-- <div class="swiper-button-prev" slot="button-prev"></div>
+      <!-- <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>  -->
     </swiper>
-  </div></template>
+  </div>
+</template>
 
 <script>
 import "swiper/dist/css/swiper.css";
-import { swiper, swiperSlide } from "vue-awesome-swiper"
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
-    components: {
-        swiper,
-        swiperSlide,
-    },
- data() {
+  components: {
+    swiper,
+    swiperSlide,
+  },
+  data() {
     return {
       swiperOption: {
         loop: true,
         autoplay: {
           delay: 3000,
           stopOnLastSlide: false,
-          disableOnInteraction: false
+          disableOnInteraction: false,
         },
         // 显示分页
         pagination: {
-          el: '.swiper-pagination',
-          clickable: true //允许分页点击跳转
+          el: ".swiper-pagination",
+          clickable: true, //允许分页点击跳转
         },
         // 设置点击箭头
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      }
-    }
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
+      isLoad: false,
+    };
   },
-  props:{
-      banners: Array,
+  props: {
+    banners: Array,
   },
   computed: {
     swiper() {
-      return this.$refs.mySwiper.swiper
-    }
+      return this.$refs.mySwiper.swiper;
+    },
   },
   mounted() {
     // current swiper instance
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-    console.log('this is current swiper instance object', this.swiper);
-     // this.swiper.slideTo(3, 1000, false);
-  }
-}
+    console.log("this is current swiper instance object", this.swiper);
+    // this.swiper.slideTo(3, 1000, false);
+  },
+  methods: {
+    imgLoad() {
+      if (!this.isLoad) {
+        this.$emit("swiperImgLoad");
+        console.log("load");
+        this.isLoad = true;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped >
@@ -71,7 +84,7 @@ export default {
   font-size: 16px;
   text-align: center;
 }
-.swiper-slide a img{
+.swiper-slide a img {
   width: 100%;
   height: 100%;
 }

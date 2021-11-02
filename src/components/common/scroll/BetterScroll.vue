@@ -68,6 +68,10 @@ export default {
     scrollTo(x, y, time = 300) {
       this.bscroll.scrollTo(x, y, time);
     },
+
+    getScrollY() {
+      return this.scroll ? this.scroll.y : 0;
+    },
   },
 };
 </script>

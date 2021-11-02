@@ -1,6 +1,13 @@
 <template>
   <div id="home">
     <nav-bar class="home_nav"><div slot="center">购物街</div></nav-bar>
+    <tab-control
+      v-show="isTabFixed"
+      class="tab-control"
+      :titles="['流行', '新款', '精选']"
+      @tabClick="tabClick"
+      ref="tabControl1"
+    />
     <!-- 不加冒号，传值都是字符串，加冒号，传的是数字 -->
     <better-scroll
       :probe-type="3"
@@ -10,13 +17,13 @@
       ref="scroll"
       @scroll="contentScroll"
     >
-      <swipers :banners="banners"></swipers>
+      <swipers :banners="banners" @swiperImgLoad="swiperImgLoad"></swipers>
       <recommend-views :recommends="recommends"></recommend-views>
       <feature-view />
       <tab-control
-        class="tab-control"
         :titles="['流行', '新款', '精选']"
         @tabClick="tabClick"
+        ref="tabControl2"
       />
       <goods-list :goods="showGoods" />
     </better-scroll>
@@ -63,8 +70,10 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
-      backposition: -590,
+      backposition: -622,
       isShow: false,
+      tabOffsetTop: 0,
+      isTabFixed: false,
     };
   },
   created() {
@@ -74,10 +83,11 @@ export default {
     this.getItemList("new");
     this.getItemList("sell");
   },
+  mounted() {},
   methods: {
     // 事件监听相关
     tabClick(index) {
-      this.$refs.scroll.scrollTo(0, -543);
+      this.$refs.scroll.scrollTo(0, -this.tabOffsetTop - 44);
       this.$refs.scroll.bscroll.refresh();
       // console.log(this.$refs.scroll);
       switch (index) {
@@ -91,6 +101,8 @@ export default {
           this.currentType = "sell";
           break;
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
     },
     // 网络请求相关
     getHomeMultidata() {
@@ -118,11 +130,25 @@ export default {
       this.$refs.scroll.scrollTo(0, -10, 500);
     },
     contentScroll(position) {
+      // 判断BackTop是否显示
       this.isShow = position.y < this.backposition;
+      // 决定tabControl是否吸顶（position：fixed）
+      this.isTabFixed = -position.y > this.tabOffsetTop;
     },
     loadMore() {
       this.getItemList(this.currentType);
     },
+    swiperImgLoad() {
+      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
+      console.log(this.tabOffsetTop);
+    },
+  },
+  actived() {
+    this.$refs.bscroll.scrollTo(0, this.saveY, 0);
+    this.$refs.scroll.refresh();
+  },
+  deactived() {
+    this.saveY = this.$refs.bscroll.getScrollY();
   },
   computed: {
     showGoods() {
@@ -132,9 +158,6 @@ export default {
 };
 </script>
 <style scoped>
-#home {
-  padding-top: 44px;
-}
 .home_nav {
   background-color: var(--color-tint);
   color: #fff;
@@ -146,10 +169,16 @@ export default {
 
 .tab-control {
   /* 适配不好：static-->fixed */
-  position: sticky;
-  top: 44px;
+  position: relative;
+  z-index: 9;
 }
 .active {
   display: block;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  top: 44px;
 }
 </style>

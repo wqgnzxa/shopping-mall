@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-list-item">
+  <div class="goods-list-item" @click="itemclk">
     <img :src="goodsItem.img" alt="" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
@@ -21,6 +21,18 @@ export default {
       default() {
         return {};
       },
+    },
+  },
+  methods: {
+    itemclk() {
+      // 动态路由方式获取数据
+      this.$router.push("/detail/" + this.goodsItem.iid);
+      // this.$router.push({
+      //   path: '/detail',
+      //   query: {
+
+      //   }
+      // })
     },
   },
 };
