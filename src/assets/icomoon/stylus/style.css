@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('../fonts/icomoon.eot?pe72d3');
-    src: url('../fonts/icomoon.eot?pe72d3#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?pe72d3') format('truetype'), url('../fonts/icomoon.woff?pe72d3') format('woff'), url('../fonts/icomoon.svg?pe72d3#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?nr9hag');
+    src: url('../fonts/icomoon.eot?nr9hag#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?nr9hag') format('truetype'), url('../fonts/icomoon.woff?nr9hag') format('woff'), url('../fonts/icomoon.svg?nr9hag#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -56,6 +56,26 @@
 
 .icon-arrow-thin-up:before {
     content: "\e90a";
+}
+
+.icon-cheveron-down:before {
+    content: "\e90f";
+}
+
+.icon-cheveron-left:before {
+    content: "\e910";
+}
+
+.icon-cheveron-right:before {
+    content: "\e911";
+}
+
+.icon-cheveron-up:before {
+    content: "\e912";
+}
+
+.icon-close:before {
+    content: "\e913";
 }
 
 .icon-home1:before {

@@ -39,7 +39,7 @@ const params = Mock.mock({
         "list|30": [{
             iid: /[a-z][A-Z][0-9]{1,2}/,
             img: Random.image("100x150", "#564"),
-            title: /^[\u4e00-\u9fa5]{0,15}$/,
+            title: /^[\u4e00-\u9fa5]{8,15}$/,
             price: /^\d{2,3}$/,
             cfav: /^\d{1,3}$/,
         }, ],
@@ -49,7 +49,7 @@ const params = Mock.mock({
         "list|30": [{
             iid: /[A-Z][a-z][0-9]{1,2}/,
             img: Random.image("100x150", "#396"),
-            title: /^[\u4e00-\u9fa5]{0,15}$/,
+            title: /^[\u4e00-\u9fa5]{8,15}$/,
             price: /^\d{2,3}$/,
             cfav: /^\d{1,3}$/,
         }, ],
@@ -59,7 +59,7 @@ const params = Mock.mock({
         "list|30": [{
             iid: /[a-z][0-9][A-Z]{1,2}/,
             img: Random.image("100x150", "#888"),
-            title: /^[\u4e00-\u9fa5]{0,15}$/,
+            title: /^[\u4e00-\u9fa5]{8,15}$/,
             price: /^\d{2,3}$/,
             cfav: /^\d{1,3}$/,
         }, ],

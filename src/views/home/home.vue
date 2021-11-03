@@ -42,11 +42,8 @@ import GoodsList from "../../components/content/goods/GoodsList.vue";
 import BackTop from "../../components/common/backTop/BackTop.vue";
 
 // 因为getHomeMultidata没有用default导出，所以用{}导入。
-import {
-  getHomeMultidata,
-  // getHomeGoodsdata,
-} from "../../network/home";
-import * as mockApi from "../../api/api.js";
+import { getHomeMultidata, getHomeGoodsdata } from "../../network/home";
+// import * as mockApi from "../../api/api.js";
 
 export default {
   name: "home",
@@ -79,16 +76,19 @@ export default {
   created() {
     this.getHomeMultidata();
     //请求商品数据
-    this.getItemList("pop");
-    this.getItemList("new");
-    this.getItemList("sell");
+    // this.getItemList("pop");
+    // this.getItemList("new");
+    // this.getItemList("sell");
+    this.getHomeGoodsdata("pop");
+    this.getHomeGoodsdata("new");
+    this.getHomeGoodsdata("sell");
   },
   mounted() {},
   methods: {
     // 事件监听相关
     tabClick(index) {
-      this.$refs.scroll.scrollTo(0, -this.tabOffsetTop - 44);
       this.$refs.scroll.bscroll.refresh();
+      this.$refs.scroll.scrollTo(0, -this.tabOffsetTop - 44);
       // console.log(this.$refs.scroll);
       switch (index) {
         case 0:
@@ -111,20 +111,34 @@ export default {
         this.recommends = res.data.data.recommend.list;
       });
     },
-    getItemList(type) {
+    getHomeGoodsdata(type) {
       const page = this.goods[type].page + 1;
-      mockApi
-        .getItemList(type)
+      getHomeGoodsdata(type, page)
         .then((res) => {
-          this.goods[type].list.push(...res.data[type][page].list);
-          console.log("网络请求到新数据啦！");
-          this.goods[type].page += 1;
+          this.goods[type].list.push(...res.data.data.list);
+          console.log(res, "网络请求到新数据啦！");
+          // this.goods[type][page] += 1;
         })
         .catch((err) => {
           console.log(err, "没有数据啦！");
           this.isPullUpLoad = false;
         });
     },
+    // 通过mockjs模拟数据：
+    // getItemList(type) {
+    //   const page = this.goods[type].page + 1;
+    //   mockApi
+    //     .getItemList(type)
+    //     .then((res) => {
+    //       this.goods[type].list.push(...res.data[type][page].list);
+    //       console.log("网络请求到新数据啦！");
+    //       this.goods[type].page += 1;
+    //     })
+    //     .catch((err) => {
+    //       console.log(err, "没有数据啦！");
+    //       this.isPullUpLoad = false;
+    //     });
+    // },
     backTopclk() {
       // console.log("this.$refs.scroll");
       this.$refs.scroll.scrollTo(0, -10, 500);
@@ -136,7 +150,7 @@ export default {
       this.isTabFixed = -position.y > this.tabOffsetTop;
     },
     loadMore() {
-      this.getItemList(this.currentType);
+      this.getHomeGoodsdata(this.currentType);
     },
     swiperImgLoad() {
       this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
@@ -144,8 +158,8 @@ export default {
     },
   },
   actived() {
-    this.$refs.bscroll.scrollTo(0, this.saveY, 0);
     this.$refs.scroll.refresh();
+    this.$refs.bscroll.scrollTo(0, this.saveY, 0);
   },
   deactived() {
     this.saveY = this.$refs.bscroll.getScrollY();

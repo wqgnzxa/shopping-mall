@@ -1,14 +1,13 @@
 <template>
-  <!-- 为解决swiper创建prev及last时间点和v-for的循环冲突问题，用v-if限制swiper-slide的展示时间 -->
   <swiper
     :options="swiperOption"
     ref="mySwiper"
-    class="recommendPage"
-    v-if="banners.length"
+    class="detail-swiper"
+    v-if="topImages.length"
   >
-    <swiper-slide v-for="items in banners"
-      ><a :href="items.link"><img :src="items.image" @load="imgLoad" /></a
-    ></swiper-slide>
+    <swiper-slide v-for="items in topImages" class="detail-swiper-item"
+      ><img :src="items"
+    /></swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
     <div class="swiper-button-prev" slot="button-prev" v-show="false"></div>
     <div class="swiper-button-next" slot="button-next" v-show="false"></div>
@@ -17,7 +16,6 @@
 
 <script>
 import "swiper/dist/css/swiper.css";
-// import "swiper/dist/js/swiper.js";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
@@ -30,7 +28,7 @@ export default {
       swiperOption: {
         loop: true,
         autoplay: {
-          delay: 500,
+          delay: 1000,
           stopOnLastSlide: false,
           disableOnInteraction: false,
         },
@@ -45,53 +43,42 @@ export default {
           prevEl: ".swiper-button-prev",
         },
       },
-      isLoad: false,
     };
   },
   props: {
-    banners: Array,
+    topImages: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
     },
   },
-  mounted() {
-    // current swiper instance
-    // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-    // console.log("this is current swiper instance object", this.swiper);
-    // this.swiper.slideTo(3, 1000, false);
-  },
-  methods: {
-    imgLoad() {
-      if (!this.isLoad) {
-        this.$emit("swiperImgLoad");
-        console.log("load");
-        this.isLoad = true;
-      }
-    },
-  },
 };
 </script>
 
-<style scoped >
-.recommendPage .swiper-container {
-  position: relative;
-  margin-top: 44px;
+<style scope>
+.detail-swiper {
   width: 100%;
-  height: 180px;
+  height: 220px;
+  vertical-align: center;
+}
+.swiper-container {
+  position: relative;
   background: pink;
 }
-.recommendPage .swiper-container .swiper-slide {
-  width: 100%;
+.swiper-container .swiper-slide {
   line-height: 180px;
   /* background: yellowgreen; */
   color: #000;
   font-size: 16px;
   text-align: center;
 }
-.swiper-slide a img {
+.detail-swiper-item img {
   width: 100%;
-  height: 100%;
 }
 </style>

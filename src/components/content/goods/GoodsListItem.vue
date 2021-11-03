@@ -1,9 +1,9 @@
 <template>
   <div class="goods-list-item" @click="itemclk">
-    <img :src="goodsItem.img" alt="" />
+    <img :src="goodsItem.show.img" alt="" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
-      <span class="price">{{ goodsItem.price }}</span>
+      <span class="price">￥ {{ goodsItem.price }}</span>
       <span class="collect">
         <i class="icon-cfav"></i>
         {{ goodsItem.cfav }}

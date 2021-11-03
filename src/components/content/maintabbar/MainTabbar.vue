@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view />
     <TabBar>
       <tab-bar-item path="/home" activeColor="blue">
         <template slot="tab-icon">

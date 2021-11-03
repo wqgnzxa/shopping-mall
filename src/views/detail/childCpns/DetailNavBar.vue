@@ -1,13 +1,19 @@
 <template>
-<div class="detail-nav-bar">
+  <div class="detail-nav-bar">
     <nav-bar>
-    <div slot="left"></slot></div>
-    <div slot="center" class="title">
-      <div class="title-items" v-for="(items,index) in titles" :class="{active: index===currentIndex}" @click="itemclk(index)" >{{items}}</div>
-    </div>
-  </nav-bar>
-
-</div>
+      <div slot="left" class="icon-back" @click="backClick"></div>
+      <div slot="center" class="title">
+        <div
+          class="title-items"
+          v-for="(items, index) in titles"
+          :class="{ active: index === currentIndex }"
+          @click="itemclk(index)"
+        >
+          {{ items }}
+        </div>
+      </div>
+    </nav-bar>
+  </div>
 </template>
 
 <script>
@@ -27,6 +33,9 @@ export default {
     itemclk(index) {
       this.currentIndex = index;
     },
+    backClick() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -42,5 +51,11 @@ export default {
 }
 .active {
   color: var(--color-tint);
+}
+.icon-back {
+  content: "";
+  font-size: 30px;
+  line-height: 44px;
+  text-align: center;
 }
 </style>
