@@ -30,6 +30,6 @@ body {
   box-shadow: 0 -3px 1px rgba(80, 80, 80, 0.2);
   background-color: #f6f6f6;
   text-align: center;
-  z-index: 9;
+  /* z-index: 9; */
 }
 </style>

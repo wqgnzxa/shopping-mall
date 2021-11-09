@@ -27,7 +27,7 @@
       />
       <goods-list :goods="showGoods" />
     </better-scroll>
-    <back-top @click.native="backTopclk" v-show="isShow" />
+    <back-top @click.native="MbackTopclk" v-show="isShow" />
   </div>
 </template>
 <script>
@@ -39,8 +39,8 @@ import BetterScroll from "../../components/common/scroll/BetterScroll.vue";
 import NavBar from "../../components/common/navbar/NavBar";
 import TabControl from "../../components/content/tabControl/TabControl.vue";
 import GoodsList from "../../components/content/goods/GoodsList.vue";
-import BackTop from "../../components/common/backTop/BackTop.vue";
 
+import { BackTopMixIn } from "../../common/mixin";
 // 因为getHomeMultidata没有用default导出，所以用{}导入。
 import { getHomeMultidata, getHomeGoodsdata } from "../../network/home";
 // import * as mockApi from "../../api/api.js";
@@ -55,8 +55,8 @@ export default {
     NavBar,
     TabControl,
     GoodsList,
-    BackTop,
   },
+  mixins: [BackTopMixIn],
   data() {
     return {
       banners: [],
@@ -67,8 +67,6 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
-      backposition: -622,
-      isShow: false,
       tabOffsetTop: 0,
       isTabFixed: false,
     };
@@ -116,11 +114,11 @@ export default {
       getHomeGoodsdata(type, page)
         .then((res) => {
           this.goods[type].list.push(...res.data.data.list);
-          console.log(res, "网络请求到新数据啦！");
+          // console.log(res, "网络请求到新数据啦！");
           // this.goods[type][page] += 1;
         })
         .catch((err) => {
-          console.log(err, "没有数据啦！");
+          // console.log(err, "没有数据啦！");
           this.isPullUpLoad = false;
         });
     },
@@ -139,22 +137,20 @@ export default {
     //       this.isPullUpLoad = false;
     //     });
     // },
-    backTopclk() {
-      // console.log("this.$refs.scroll");
-      this.$refs.scroll.scrollTo(0, -10, 500);
-    },
+    // backTopclk() {},
     contentScroll(position) {
-      // 判断BackTop是否显示
-      this.isShow = position.y < this.backposition;
+      // // 判断BackTop是否显示
+      // this.isShow = position.y < this.backposition;
       // 决定tabControl是否吸顶（position：fixed）
       this.isTabFixed = -position.y > this.tabOffsetTop;
+      this.MisScroll(position, -this.tabOffsetTop);
     },
     loadMore() {
       this.getHomeGoodsdata(this.currentType);
     },
     swiperImgLoad() {
       this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
-      console.log(this.tabOffsetTop);
+      // console.log(this.tabOffsetTop);
     },
   },
   actived() {

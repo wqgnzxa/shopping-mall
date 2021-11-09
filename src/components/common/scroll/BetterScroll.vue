@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     initBscroll() {
-      // document.querySelector(".wrapper")
+      document.querySelector(".wrapper");
       this.bscroll = new BScroll(this.$refs.wrapper, {
         click: true,
         probeType: this.probeType,

@@ -32,6 +32,7 @@ export default {
   methods: {
     itemclk(index) {
       this.currentIndex = index;
+      this.$emit("itemclk", index);
     },
     backClick() {
       this.$router.go(-1);

@@ -8,21 +8,37 @@ export function getDetail(iid) {
         },
     });
 }
-// const dataList = [];
-// getDetail(iid).then((res) => {
-//     dataList = res.data.result;
-//     return dataList;
-// });
-// itemInfo = dataList.itemInfo;
-// columns = dataList.columns;
-// services = dataList.services;
-// export class Goods {
-//     constructor(itemInfo, columns, services) {
-//         this.result = itemInfo.result;
-//         this.desc = itemInfo.desc;
-//         this.newPrice = itemInfo.price;
-//         this.oldPrice = itemInfo.oldprice;
-//         this.discount = itemInfo.discountdisc;
-//         this.columns = columns;
-//     }
-// }
+
+export function getRecommend(iid) {
+    return request2({
+        url: "/recommend",
+        params: {
+            iid,
+        },
+    });
+}
+
+export class Goods {
+    constructor(itemInfo, columns, services) {
+        this.title = itemInfo.title;
+        this.desc = itemInfo.desc;
+        this.newPrice = itemInfo.price;
+        this.oldPrice = itemInfo.oldPrice;
+        this.discount = itemInfo.discountDesc;
+        this.columns = columns;
+        this.services = services;
+        this.realPrice = itemInfo.lowNowPrice;
+        this.discountBgColor = itemInfo.discountBgColor;
+    }
+}
+
+export class Shop {
+    constructor(shopInfo) {
+        this.logo = shopInfo.shopLogo;
+        this.name = shopInfo.name;
+        this.fans = shopInfo.cFans;
+        this.sells = shopInfo.cSells;
+        this.score = shopInfo.score;
+        this.goodcount = shopInfo.cGoods;
+    }
+}

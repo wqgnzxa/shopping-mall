@@ -44,7 +44,7 @@ export default {
   width: 100%;
   text-align: center;
   background-color: #fff;
-  z-index: 10;
+  z-index: 9;
 }
 
 .tab-item {
