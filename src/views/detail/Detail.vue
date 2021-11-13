@@ -8,7 +8,7 @@
       :probe-type="3"
       @scroll="contentScroll"
     >
-      <div>{{ $store.state.cartList.length }}</div>
+      <!-- <div>{{ $store.state.cartList.length }}</div> -->
       <detail-swiper :top-images="topImages" />
       <detail-base-info :detailGoods="detailGoods" />
       <shop-info :shop="shop" />
@@ -23,6 +23,7 @@
     </better-scroll>
     <detail-bottom-bar @addtocart="addtocart" />
     <back-top @click.native="MbackTopclk" v-show="isShow" />
+    <!-- <toast :message="message" :isshow="isshow" /> -->
   </div>
 </template>
 
@@ -37,10 +38,12 @@ import DetailRateInfo from "./childCpns/DetailRateInfo.vue";
 import GoodsList from "../../components/content/goods/GoodsList.vue";
 import BetterScroll from "../../components/common/scroll/BetterScroll.vue";
 import DetailBottomBar from "./childCpns/DetailBottomBar.vue";
+// import Toast from "../../components/common/toast/toast.vue";
 
 import { BackTopMixIn } from "../../common/mixin.js";
 
 import { getDetail, getRecommend, Goods, Shop } from "../../network/detail";
+
 export default {
   name: "detail",
   components: {
@@ -54,6 +57,7 @@ export default {
     GoodsList,
     BetterScroll,
     DetailBottomBar,
+    // Toast,
   },
   mixins: [BackTopMixIn],
   data() {
@@ -68,6 +72,7 @@ export default {
       recommends: [],
       themeTopYs: null,
       currentIndex: 0,
+      duration: 2000,
     };
   },
   created() {
@@ -87,7 +92,7 @@ export default {
         data.columns,
         data.shopInfo.services
       );
-      // console.log(this.detailGoods);
+      console.log(this.detailGoods);
       // 3.创建店铺信息
       this.shop = new Shop(data.shopInfo);
       // console.log(this.shop);
@@ -154,11 +159,21 @@ export default {
       product.image = this.topImages[0];
       product.title = this.detailGoods.title;
       product.desc = this.detailGoods.desc;
-      product.price = this.detailGoods.newPrice;
+      product.price = this.detailGoods.realPrice;
       product.iid = this.iid;
       console.log(product);
       //2.传入vuex
-      this.$store.commit("addCart", product);
+      this.$store.dispatch("addCart", product).then((res) => {
+        console.log(res); //添加了新的商品
+        //未封装时的toast用法：
+        // this.message = res;
+        // this.isshow = true;
+        // setTimeout(() => {
+        //   this.isshow = false;
+        // }, 2000);
+        // 封装用法
+        this.$toast.showup(res, 2000);
+      });
     },
   },
 };
