@@ -114,7 +114,7 @@ export default {
       getHomeGoodsdata(type, page)
         .then((res) => {
           this.goods[type].list.push(...res.data.data.list);
-          // console.log(res, "网络请求到新数据啦！");
+          console.log(res, "网络请求到新数据啦！");
           // this.goods[type][page] += 1;
         })
         .catch((err) => {

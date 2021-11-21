@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     initBscroll() {
-      document.querySelector(".wrapper");
+      // document.querySelector(".wrapper");
       this.bscroll = new BScroll(this.$refs.wrapper, {
         click: true,
         probeType: this.probeType,
@@ -51,8 +51,10 @@ export default {
         observeDOM: true,
         observeImage: true,
       });
-      this.bscroll.on("pullingUp", this.pullingUpHandler);
-      console.log("上拉加载啦！");
+      if (this.pullUpLoad) {
+        this.bscroll.on("pullingUp", this.pullingUpHandler);
+        console.log("上拉加载啦！");
+      }
     },
     pullingUpHandler() {
       this.isPullUpLoad = true;

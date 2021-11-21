@@ -23,6 +23,7 @@ export default {
   line-height: 44px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   z-index: 9;
+  font-weight: 700;
 }
 
 .left,

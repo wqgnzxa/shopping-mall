@@ -1,27 +1,27 @@
 <template>
   <TabBar>
-    <tab-bar-item path="/home" activeColor="blue">
+    <tab-bar-item path="/home">
       <template slot="tab-icon">
         <div class="icon-tab"></div>
         <span>首页</span>
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/category" activeColor="blue">
+    <tab-bar-item path="/category">
       <template slot="tab-icon">
         <div class="icon-tab"></div>
         <span>分类</span>
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/shopcart" activeColor="blue">
+    <tab-bar-item path="/shopcart">
       <template slot="tab-icon">
         <div class="icon-tab"></div>
         <span>购物车</span>
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/profile" activeColor="blue">
+    <tab-bar-item path="/profile">
       <template slot="tab-icon">
         <div class="icon-tab"></div>
         <span>我的</span>
